@@ -96,3 +96,9 @@ LEFT JOIN enrollments e ON c.CourseId = e.CourseId
 GROUP BY d.DepartmentName
 ORDER BY No_Of_Students DESC;
 ```
+## Tools Used
+- MySQL / SQL Server (for database creation and queries)
+- MySQL Workbench (for ERD diagram)
+- dbdiagram.io
+
+## Folder Structure
