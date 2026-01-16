@@ -21,3 +21,40 @@ The project demonstrates the practical use of SQL Data Definition Language (DDL)
 The Entity Relationship Diagram (ERD) illustrates the logical structure of the
 Student Management System database, showing entities, attributes, and the
 relationships between students, courses, departments, instructors and enrollments.
+
+## Tables and Relationships
+### Students
+- **Columns**: studentID(PK), Name, Gender, DOB, DepartmentID
+- **Description**: Stores information about each student.
+- **Relationships**:
+  - One-to-Many with enrollments (one student can have multiple enrollments).
+  
+### Courses
+- **Columns**: CourseID(PK), CourseName, DepartmentID(FK)
+- **Description**: contains all available course
+- **Relationships:
+  -  One-to-Many with enrollments (one course can have multiple enrollments)
+  -  Many-to-One with departments (multiple courses can be from the same department)
+
+### Departments
+- **Columns**: DepartmentID(PK), DepartmentName
+- **Description:** Stores all departments in the institution.
+- **Relationships:**
+  - One-to-Many with Courses (one department can have many courses)
+  - One-to-Many with Instructors (one department can have many instructors)
+
+### Instructors
+- **Columns**: InstructorID(PK), InstructorName, Gender, DepartmentID(FK), CourseID, HireDate, Email
+- **Description**: Stores all instructors information
+- **Relationships**:
+  - Many-to-One with Departments (many instructors belong to one department)
+  - One-to-One with Courses (each course is assigned to an instructor)
+ 
+### Enrollments
+- **Columns**: EnrollmentID(PK), StudentID(FK), CourseID(FK), EnrollmentDate
+- **Description**: track students records students enrollment into different courses
+- **Description:** Tracks which students are enrolled in which courses.
+- **Relationships:**
+  - Many-to-One with Students
+  - Many-to-One with Courses
+  - Implements Many-to-Many relationship between Students and Courses
