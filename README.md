@@ -52,9 +52,47 @@ relationships between students, courses, departments, instructors and enrollment
  
 ### Enrollments
 - **Columns**: EnrollmentID(PK), StudentID(FK), CourseID(FK), EnrollmentDate
-- **Description**: track students records students enrollment into different courses
 - **Description:** Tracks which students are enrolled in which courses.
 - **Relationships:**
   - Many-to-One with Students
   - Many-to-One with Courses
   - Implements Many-to-Many relationship between Students and Courses
+
+## Sample SQL Queries
+### How many students are currently enrolled in each course?
+```sql
+SELECT c.CourseName,c.CourseID, COUNT(e.StudentID) AS EnrolledStudents
+FROM Courses c
+LEFT JOIN Enrollments e ON c.CourseID = e.CourseID
+GROUP BY c.CourseName, c.CourseID
+ORDER BY EnrolledStudents DESC;
+```
+
+### Which courses have the highest number of enrollments?
+```sql
+SELECT TOP 5 WITH TIES c.CourseName,c.CourseID, COUNT(e.StudentID) AS EnrollmentCount
+FROM Courses c
+JOIN Enrollments e ON c.CourseID = e.CourseID
+GROUP BY c.CourseName,c.CourseID
+ORDER BY EnrollmentCount DESC;
+```
+
+### Which students are enrolled in multiple courses, and which courses are they taking?
+```sql
+SELECT s.Name,s.StudentID, COUNT(e.CourseID) AS CourseCount, GROUP_CONCAT(c.CourseName) AS Courses
+FROM Students s
+JOIN Enrollments e ON s.StudentID = e.StudentID
+JOIN courses c on e.CourseID = c.CourseID
+GROUP BY s.Name, s.StudentID
+HAVING COUNT(e.CourseID) > 1;
+```
+### What is the total number of students per department across all courses?
+```sql
+SELECT d.DepartmentName,
+COUNT(DISTINCT e.StudentId) AS No_Of_Students
+FROM departments d
+LEFT JOIN courses c ON d.DepartmentID = c.DepartmentId
+LEFT JOIN enrollments e ON c.CourseId = e.CourseId
+GROUP BY d.DepartmentName
+ORDER BY No_Of_Students DESC;
+```
