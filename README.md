@@ -102,3 +102,28 @@ ORDER BY No_Of_Students DESC;
 - dbdiagram.io
 
 ## Folder Structure
+
+student-management-system/
+├── README.md                  # Project documentation
+├── database/                  # SQL database scripts
+│   ├── schema/                # Scripts to create tables
+│   │   ├── 1_create_departments.sql
+│   │   ├── 2_create_courses.sql
+│   │   ├── 3_create_students.sql
+│   │   ├── 4_create_instructors.sql
+│   │   └── 5_create_enrollments.sql
+│   ├── data/                  # Scripts to populate tables with sample data
+│   │   ├── 6_fill_departments.sql
+│   │   ├── 7_fill_students.sql
+│   │   ├── 8_fill_instructors.sql
+│   │   ├── 9_fill_courses.sql
+│   │   └── 10_fill_enrollments.sql
+│   └── queries/               # Pre-written reporting queries
+│       └── reporting_queries.sql
+├── documentation/             # Project documentation and visuals
+│   ├── erd.png
+│   └── dataset.xlsx
+└── setup.sql                  # Master script to set up the entire database
+
+## Author
+Wojuade Oluwajuwonlo Enoch.
