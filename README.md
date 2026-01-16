@@ -16,7 +16,7 @@ The project demonstrates the practical use of SQL Data Definition Language (DDL)
 
 ## Entity Relationship Diagram (ERD)
 
-![Student Management System (SMS) Database](/documentation/Entity Relational Diagram.png)
+![Student Management System (SMS) Database](/documentation/erd.png)
 
 The Entity Relationship Diagram (ERD) illustrates the logical structure of the
 Student Management System database, showing entities, attributes, and the
