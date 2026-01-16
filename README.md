@@ -16,7 +16,7 @@ The project demonstrates the practical use of SQL Data Definition Language (DDL)
 
 ## Entity Relationship Diagram (ERD)
 
-![Student Management System (SMS) Database](/documentation/erd.png)
+![Student Management System (SMS) Database](documentation/erd.png)
 
 The Entity Relationship Diagram (ERD) illustrates the logical structure of the
 Student Management System database, showing entities, attributes, and the
@@ -32,7 +32,7 @@ relationships between students, courses, departments, instructors and enrollment
 ### Courses
 - **Columns**: CourseID(PK), CourseName, DepartmentID(FK)
 - **Description**: contains all available course
-- **Relationships:
+- **Relationships**:
   -  One-to-Many with enrollments (one course can have multiple enrollments)
   -  Many-to-One with departments (multiple courses can be from the same department)
 
@@ -70,7 +70,7 @@ ORDER BY EnrolledStudents DESC;
 
 ### Which courses have the highest number of enrollments?
 ```sql
-SELECT TOP 5 WITH TIES c.CourseName,c.CourseID, COUNT(e.StudentID) AS EnrollmentCount
+SELECT c.CourseName,c.CourseID, COUNT(e.StudentID) AS EnrollmentCount
 FROM Courses c
 JOIN Enrollments e ON c.CourseID = e.CourseID
 GROUP BY c.CourseName,c.CourseID
@@ -89,10 +89,10 @@ HAVING COUNT(e.CourseID) > 1;
 ### What is the total number of students per department across all courses?
 ```sql
 SELECT d.DepartmentName,
-COUNT(DISTINCT e.StudentId) AS No_Of_Students
+COUNT(DISTINCT e.StudentID) AS No_Of_Students
 FROM departments d
-LEFT JOIN courses c ON d.DepartmentID = c.DepartmentId
-LEFT JOIN enrollments e ON c.CourseId = e.CourseId
+LEFT JOIN courses c ON d.DepartmentID = c.DepartmentID
+LEFT JOIN enrollments e ON c.CourseID = e.CourseID
 GROUP BY d.DepartmentName
 ORDER BY No_Of_Students DESC;
 ```
@@ -102,7 +102,7 @@ ORDER BY No_Of_Students DESC;
 - dbdiagram.io
 
 ## Folder Structure
-
+```
 student-management-system/
 ├── README.md                  # Project documentation
 ├── database/                  # SQL database scripts
@@ -124,6 +124,7 @@ student-management-system/
 │   ├── erd.png
 │   └── dataset.xlsx
 └── setup.sql                  # Master script to set up the entire database
+```
 
 ## Author
 Wojuade Oluwajuwonlo Enoch.
