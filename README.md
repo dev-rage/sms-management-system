@@ -2,7 +2,7 @@
 ### SQL Database Project
 
 ## Project Overview
-This project focuses on the design and implementation of a relational database for a Student Management System (SMS) using SQL. The database efficiently stores and manages information related to students, courses, instructors, and enrollments.
+This project focuses on the design and implementation of a relational database for a Student Management System (SMS) using SQL. The database efficiently stores and manages information related to students, courses, departments, instructors and enrollments.
 
 It supports core administrative operations such as student registration, course assignment, and the generation of dynamic reports through SQL queries.
 
@@ -37,17 +37,19 @@ relationships between students, courses, departments, instructors and enrollment
 
 ## Tables and Relationships
 ### Students
-- **Columns**: studentID(PK), Name, Gender, DOB, DepartmentID
+- **Columns**: StudentID(PK), Name, Gender, DOB, DepartmentID(FK)
 - **Description**: Stores information about each student.
 - **Relationships**:
-  - One-to-Many with enrollments (one student can have multiple enrollments).
+  - One-to-Many with Enrollments (one student can have multiple enrollments).
+  - Many-to-One with Departments (Many students can belong to one department)
   
 ### Courses
 - **Columns**: CourseID(PK), CourseName, DepartmentID(FK)
 - **Description**: contains all available courses
 - **Relationships**:
-  -  One-to-Many with enrollments (one course can have multiple enrollments)
-  -  Many-to-One with departments (multiple courses can be from the same department)
+  -  One-to-Many with Enrollments (one course can have multiple enrollments)
+  -  Many-to-One with Departments (multiple courses can be from the same department)
+  -  One-to-One with Instructors (one instructor is assigned to a course)
 
 ### Departments
 - **Columns**: DepartmentID(PK), DepartmentName
@@ -55,6 +57,7 @@ relationships between students, courses, departments, instructors and enrollment
 - **Relationships:**
   - One-to-Many with Courses (one department can have many courses)
   - One-to-Many with Instructors (one department can have many instructors)
+  - One-to-Many with Students (one department can have multiple students) 
 
 ### Instructors
 - **Columns**: InstructorID(PK), InstructorName, Gender, DepartmentID(FK), CourseID, HireDate, Email
