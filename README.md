@@ -102,7 +102,7 @@ HAVING COUNT(e.CourseID) > 1;
 ```
 **📈 Key Finding:** 97 out of 100 students enrolled in multiple courses, with maximum of 4 courses per student, showing healthy academic engagement.
 
-###3️⃣ Department Distribution
+### 3️⃣Department Distribution
 **Business Question**: What is the total number of students per department across all courses?
 ```sql
 SELECT d.DepartmentName,
